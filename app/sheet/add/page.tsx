@@ -1,7 +1,7 @@
 import { auth } from "@/auth";
 import { Card, CardContent } from "@/components/ui/card";
 import React from "react";
-import CastOnSheetForm from "../ui/cast-on-sheet-form";
+import CreateSheetForm from "../ui/create-sheet-form";
 
 export default async function AddSheetPage() {
   const session = await auth();
@@ -9,7 +9,7 @@ export default async function AddSheetPage() {
   return (
     <Card className="border-0">
       <CardContent className="border-0">
-        <CastOnSheetForm user={session?.user} />
+        <CreateSheetForm user={session?.user} />
       </CardContent>
     </Card>
   );

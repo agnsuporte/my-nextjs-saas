@@ -190,7 +190,7 @@ export async function fetchSheetsMonth(
   }
 
   try {
-    month = await prisma.$queryRaw`
+    month = await prisma.$queryRaw `
 			SELECT 
 				id, 
 				user_id, 

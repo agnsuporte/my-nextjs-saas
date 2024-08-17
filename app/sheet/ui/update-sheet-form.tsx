@@ -101,7 +101,6 @@ export default function UpdateSheetForm({ sheet }: Props) {
                     <Input
                       autoComplete="on"
                       type="text"
-                      defaultValue="21/07/2024"
                       placeholder="Obra que trabalhou"
                       {...field}
                       // disabled={isPending}

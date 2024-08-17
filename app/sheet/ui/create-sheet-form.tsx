@@ -7,7 +7,7 @@ import { useState, useTransition } from "react";
 import { useForm } from "react-hook-form";
 import type { z } from "zod";
 
-import { addSheet } from "@/actions/sheet";
+import { CreateSheet } from "@/actions/sheet";
 
 import AuthFormMessage from "@/components/auth/auth-form-message";
 /**
@@ -39,7 +39,7 @@ interface Props {
   user?: User;
 }
 
-export default function CastOnSheetForm({ user }: Props) {
+export default function CreateSheetForm({ user }: Props) {
   const [isPending, startTransition] = useTransition();
   const [error, setError] = useState<string>("");
   const [success, setSuccess] = useState<string>("");
@@ -69,7 +69,7 @@ export default function CastOnSheetForm({ user }: Props) {
   const onSubmit = async (values: z.infer<typeof CreateSheetSchema>) => {
     startTransition(async () => {
       try {
-        const { success, error } = await addSheet(values);
+        const { success, error } = await CreateSheet(values);
         if (error) setError(error);
         toast({
           title: "Sucesso !",
@@ -105,8 +105,7 @@ export default function CastOnSheetForm({ user }: Props) {
                     <Input
                       autoComplete="on"
                       type="text"
-                      defaultValue="21/07/2024"
-                      placeholder="Obra que trabalhou"
+                      placeholder="Obra que trabalhou."
                       {...field}
                       // disabled={isPending}
                     />

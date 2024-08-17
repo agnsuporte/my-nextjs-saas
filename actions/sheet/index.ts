@@ -10,7 +10,7 @@ import type { z } from "zod";
  * @param {z.infer<typeof CreateSheetSchema>} sheet - Dados para registro.
  * @returns {Promise<{error?: string, success?: string}>}.
  */
-export async function addSheet(
+export async function CreateSheet(
   sheet: z.infer<typeof CreateSheetSchema>,
 ): Promise<{ error?: string; success?: string }> {
   noStore();
@@ -124,16 +124,16 @@ export async function updateSheet(
 /**
  * Este método remove um lançamento da base de dados
  * @param {string} id
- * @returns {Promise<{message: string}>}
+ * @returns {Promise<{message?: string}>}
  */
-export async function deleteSheet(id: string): Promise<{ message: string }> {
+export async function deleteSheet(id: string): Promise<{ message?: string }> {
   noStore();
   try {
     await prisma.sheet.delete({
       where: { id },
     });
     revalidatePath("/sheet");
-    return { message: "Deleted Sheet." };
+    return { message: "" };
   } catch (error) {
     return { message: "Database Error: Failed to Delete Sheet." };
   }

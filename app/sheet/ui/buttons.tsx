@@ -1,8 +1,6 @@
 import { deleteSheet } from "@/actions/sheet";
-import { useToast } from "@/components/ui/use-toast";
 import { PencilIcon, PlusIcon, TrashIcon } from "@heroicons/react/24/outline";
 import Link from "next/link";
-// import { deleteInvoice } from '@/app/lib/actions';
 
 export function CreateSheet() {
   return (
@@ -22,14 +20,13 @@ export function UpdateSheet({ id }: { id: string }) {
       href={`/sheet/${id}/edit`}
       className="rounded-md border p-2 hover:bg-gray-100"
     >
-      <PencilIcon className="w-5" />
+      <PencilIcon className="w-4" />
     </Link>
   );
 }
 
 export function DeleteSheet({ id }: { id: string }) {
   const deleteSheetWithId = deleteSheet.bind(null, id);
-
   return (
     <form action={deleteSheetWithId}>
       <button className="rounded-md border p-2 hover:bg-green-400">
